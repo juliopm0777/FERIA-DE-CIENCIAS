@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feria de Ciencias - Tangram y Fracciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+      color: #222;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    header, footer {
+      background: linear-gradient(90deg, #FF6F91, #FF9671);
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      font-family: 'Fredoka One', cursive;
+      box-shadow: 0 5px 15px rgba(255,111,145,0.4);
+      border-radius: 15px;
+      margin-bottom: 30px;
+      user-select: none;
+      transition: background 0.5s ease;
+    }
+    header:hover {
+      background: linear-gradient(90deg, #FF9671, #FF6F91);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      text-shadow: 1px 1px 3px #d36f7b;
+      letter-spacing: 1.5px;
+    }
+    section {
+      background: white;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border-left: 10px solid;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+    section:nth-of-type(2) {
+      border-color: #FF6F91;
+      animation-delay: 0.2s;
+    }
+    section:nth-of-type(3) {
+      border-color: #FF9671;
+      animation-delay: 0.4s;
+    }
+    section:nth-of-type(4) {
+      border-color: #F9F871;
+      animation-delay: 0.6s;
+    }
+    section:nth-of-type(5) {
+      border-color: #60EFFF;
+      animation-delay: 0.8s;
+    }
+    section:nth-of-type(6) {
+      border-color: #47B39C;
+      animation-delay: 1s;
+    }
+    section:nth-of-type(7) {
+      border-color: #E76F51;
+      animation-delay: 1.2s;
+    }
+    section:nth-of-type(8) {
+      border-color: #F4A261;
+      animation-delay: 1.4s;
+    }
+    section:nth-of-type(9) {
+      border-color: #2A9D8F;
+      animation-delay: 1.6s;
+    }
+    section:nth-of-type(10) {
+      border-color: #264653;
+      animation-delay: 1.8s;
+    }
+    section:nth-of-type(11) {
+      border-color: #E76F51;
+      animation-delay: 2s;
+    }
+    section:nth-of-type(12) {
+      border-color: #FF6F91;
+      animation-delay: 2.2s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #FF6F91;
+      text-shadow: 1px 1px 4px #F1A6B0;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #FF9671;
+      border-radius: 3px;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px #FF9671AA;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+    }
+    ul {
+      padding-left: 1.3em;
+    }
+    ul li {
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #555;
+      transition: color 0.3s ease;
+      cursor: default;
+    }
+    ul li:hover {
+      color: #FF6F91;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(255, 111, 145, 0.15);
+      margin: 20px auto;
+      display: block;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+    .qr {
+      text-align: center;
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 280px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 111, 145, 0.25);
+      border: 6px solid #FF6F91;
+      transition: border-color 0.5s ease;
+      cursor: pointer;
+    }
+    .qr:hover {
+      border-color: #FF9671;
+    }
+    .qr p {
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #FF6F91;
+      text-shadow: 1px 1px 2px #f4a6a8;
+    }
+    .qr img {
+      border: none;
+      padding: 0;
+      box-shadow: none;
+      max-width: 220px;
+    }
+    footer p {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+    iframe {
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(255, 111, 145, 0.3);
+      max-width: 100%;
+      margin: 20px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feria de Ciencias: Tangram y Fracciones</h1>
+  </header>
+
+  <section>
+    <h2>Recorrido: El Mundo del Tangram</h2>
+    <p>
+      En esta primera parte vas a descubrir el origen, la historia, cómo se fabrica y cómo jugar con el tangram.
+      ¡Explorá las formas geométricas, figuras sorprendentes y aprendé matemáticas de forma divertida con este rompecabezas milenario!
+    </p>
+  </section>
+
+  <section>
+    <h2>Minijuegos y Retos Divertidos</h2>
+    <ul>
+      <li>
+        <strong>Arma la figura:</strong> Mostrar una silueta (como un animal o una casa) y desafiar a los visitantes a recrearla con piezas del tangram.
+      </li>
+      <li>
+        <strong>Fracciones en acción:</strong> Dar tarjetas con fracciones (como 3/4 o 5/8) y pedir a los alumnos que usen piezas del tangram o recortes para representar esas fracciones visualmente.
+      </li>
+      <li>
+        <strong>Memotest fraccionado:</strong> Un memotest donde deben unir una fracción con su representación gráfica (por ejemplo, 1/2 con un círculo partido en 2).
+      </li>
+      <li>
+        <strong>Tangram multicolor:</strong> Pintar cada pieza del tangram de un color distinto y pedir a los jugadores que sumen los colores/fracciones al armar figuras.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Video Explicativo sobre el Tangram</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/evw9D9uLKbM"
+      title="El Tangram para niños"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </section>
+
+  <section>
+    <h2>Recorrido: El Universo de las Fracciones</h2>
+    <p>
+      En esta segunda parte vas a aprender todo sobre las fracciones: qué son, su historia, sus tipos y cómo se usan en la vida real.
+      También descubrirás juegos, actividades y curiosidades para dominar el lenguaje de las partes.
+    </p>
+  </section>
+
+  <section>
+    <h2>Minijuegos y Retos Divertidos</h2>
+    <ul>
+      <li><strong>Arma la figura:</strong> Mostrar una silueta (como un animal o una casa) y desafiar a los visitantes a recrearla con piezas del tangram.</li>
+      <li><strong>Fracciones en acción:</strong> Dar tarjetas con fracciones (como 3/4 o 5/8) y pedir a los alumnos que usen piezas del tangram o recortes para representar esas fracciones visualmente.</li>
+      <li><strong>Memotest fraccionado:</strong> Un memotest donde deben unir una fracción con su representación gráfica (por ejemplo, 1/2 con un círculo partido en 2).</li>
+      <li><strong>Tangram multicolor:</strong> Pintar cada pieza del tangram de un color distinto y pedir a los jugadores que sumen los colores/fracciones al armar figuras.</li>
+    </ul>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Visual-fractions.svg/640px-Visual-fractions.svg.png"
+      alt="Fracciones visuales"
+    />
+  </section>
+
+  <section>
+    <h2>Video Explicativo sobre las Fracciones</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/7Xvlv3SCA4c"
+      title="TIPOS DE FRACCIONES Super fácil"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </section>
+
+  <section class="qr">
+    <h2>Escaneá para acceder a esta presentación</h2>
+    <p>Escaneá este código QR desde tu celular o tablet:</p>
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?data=https://tupaginaejemplo.com/feria-fracciones&size=200x200"
+      alt="QR fracciones"
+    />
+  </section>
+
+  <footer>
+    <p>Creado por Julio Pucheta | Creado para la Feria de Ciencias | © 2025</p>
+  </footer>
+</body>
+</html>
